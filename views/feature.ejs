@@ -13,12 +13,8 @@
 
     <div class="dateAndTime">
         <p id="live-time"></p>
-
-        <p class="date">
-            <%= dateAndTime %>
-        </p>
-
     </div>
+
     <div class="container">
 
         <form class="myForm" action="/weather" method="post">
@@ -35,41 +31,51 @@
 
         <p>Enter the City Name</p>
 
+        <% if (locals.allData) { %>
 
-        <div class="weather-info">
+            <div class="weather-info">
 
-            <h2 class="cityName">
-                <%= allData.name %>
-            </h2>
+                <h2 class="cityName">
+                    <%= allData.name %>
+                </h2>
 
-            <h1 class="temp">
-                <%= Math.floor(allData.main.temp) %>°C</p>
-            </h1>
+                <h1 class="temp">
+                    <%= Math.floor(allData.main.temp) %>°C</p>
+                </h1>
 
-            <h2 class="weather-condition">
-                <%= allData.weather[0].main %>
-            </h2>
+                <h2 class="weather-condition">
+                    <%= allData.weather[0].main %>
+                </h2>
 
-        </div>
-
-        <div class="otherinfo">
-
-            <div class="box">
-                <p>Wind: <%= allData.wind.speed %> M/S</p>
             </div>
-            <div class="box">
-                <p>Pressure: <%= allData.main.pressure %> HPA</p>
+
+            <div class="otherinfo">
+
+                <div class="box">
+                    Wind: <%= allData.wind.speed %> M/S
+                </div>
+                <div class="box">
+                    Pressure: <%= allData.main.pressure %> HPA
+                </div>
+                <div class="box">
+                    Humidity: <%= allData.main.humidity %>%
+                </div>
+                <div class="box">
+                    Visibility: <%= allData.visibility %> Meters
+                </div>
             </div>
-            <div class="box">
-                <p>Humidity: <%= allData.main.humidity %>%</p>
-            </div>
-            <div class="box">
-                <p>Visibility: <%= allData.visibility %> Meters</p>
-            </div>
-        </div>
+
+            <% } else { %>
+                <h1 style="margin-top: 26px;">Oops! Wrong input, try again</h1>
+                <% }%>
 
     </div>
 
+
+    <footer>
+        <p> Salman Siddiqui | © <%= new Date().getFullYear() %> All Rights Reserved
+        </p>
+    </footer>
     <script>
         function updateTime() {
             const now = new Date();
@@ -84,6 +90,7 @@
 
         // Initial call to set the initial time
         updateTime();
+
     </script>
 
     <script src="../index.js"></script>

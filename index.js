@@ -20,18 +20,17 @@ function dateAndTimePicker() {
     const dayName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const month = date.getMonth();
     const Monthname = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const year = date.getFullYear();
+
 
     // Get the time:
 
-   /* const hour = date.getHours();
-    const mint = date.getMinutes();
-    const sec = date.getSeconds();
-    const time = `${hour}: ${mint} : ${sec}`; */
+    /* const hour = date.getHours();
+     const mint = date.getMinutes();
+     const sec = date.getSeconds();
+     const time = `${hour}: ${mint} : ${sec}`; */
 
     arr[0] = dayName[day];
     arr[1] = Monthname[month];
-    arr[2] = year;
 
 
     return arr
@@ -53,7 +52,7 @@ app.post("/weather", async (req, res) => {
         res.render("feature.ejs", {
             allData: response.data,
             dateAndTime: dateAndTimePicker(),
-       //     liveTime: updateLiveTime()
+            //     liveTime: updateLiveTime()
         });
 
     } catch (error) {
@@ -61,16 +60,11 @@ app.post("/weather", async (req, res) => {
         res.render("feature.ejs", {
             error: ("Oops! " + error.message)
         })
+
     }
 
 })
 
-
-try {
-    
-} catch (error) {
-    
-}
 
 app.listen(port, () => {
     console.log(`Server Listening on port ${port}`);
