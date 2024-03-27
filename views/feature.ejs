@@ -11,9 +11,7 @@
 
 <body>
 
-    <div class="dateAndTime">
-        <p id="live-time"></p>
-    </div>
+
 
     <div class="container">
 
@@ -31,8 +29,7 @@
 
         <p>Enter the City Name</p>
 
-        <% if (locals.allData) { %>
-
+        <% if (locals.allData) {} %>
             <div class="weather-info">
 
                 <h2 class="cityName">
@@ -65,16 +62,14 @@
                 </div>
             </div>
 
-            <% } else { %>
-                <h1 style="margin-top: 26px;">Oops! Wrong input, try again</h1>
-                <% }%>
 
     </div>
 
 
     <footer>
-        <p> Salman Siddiqui | © <%= new Date().getFullYear() %> All Rights Reserved
-        </p>
+        <!-- Footer section displaying copyright information -->
+        Salman Siddiqui | © <%= new Date().getFullYear() %> All Rights Reserved
+
     </footer>
     <script>
         function updateTime() {
